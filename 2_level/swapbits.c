@@ -1,5 +1,45 @@
 #include <unistd.h>
 
+void ft_putchar(char c)
+{
+  write(1, &c, 1);
+}
+
+void ft_putstr(char *c)
+{
+  int i = 0;
+  while (c[i] != '\0')
+  {
+    ft_putchar(c[i]);
+    i++;
+  }
+}
+
+void print_bits(unsigned char octet)
+{
+  char res[8];
+  int num = octet;
+  int i = 8;
+  while (i-- > 0)
+  {
+    if (num > 1)
+    {
+      if (num % 2 == 0)
+        res[i] = '0';
+      else if (num % 2 == 1)
+        res[i] = '1';
+    }
+    if (num <= 1)
+    {
+      if (num == 0)
+        res[i] = '0';
+      else if (num == 1)
+        res[i] = '1';
+    }
+    num /= 2;
+  }
+  ft_putstr(res);
+}
 unsigned char 	swap_bits(unsigned char octet)
 {
 	return ((octet >> 4) | (octet << 4));
@@ -7,13 +47,9 @@ unsigned char 	swap_bits(unsigned char octet)
 
 int		main(void)
 {
-	char c;
-
-	c = 't';
-	write(1, &c, 1);
-	write(1, "\n",1);
-	c = swap_bits(c);
-	write(1, &c, 1);
-	write(1, "\n", 1);
+	int i = 2;
+	print_bits(i);
+	i = swap_bits(i);
+	print_bits(i);
 	return (0);
 }
