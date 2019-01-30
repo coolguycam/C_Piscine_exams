@@ -8,7 +8,7 @@ void ft_putchar(char c)
 int check(char *str, int pos)
 {
 	int i = 0;
-	while (i <= pos)
+	while (i < pos)
 	{	
 		if (str[pos] == str[i])
 			return (0);
@@ -24,13 +24,13 @@ int main(int ac, char **av)
 		int i = 0;
 		int j = 0;
 		
-		while (av[2][i] != '\0')
+		while (av[1][i] != '\0')
 		{
-			if (av[1][j] == av[2][i] && check(av[1], j))
-			{
-				ft_putchar(av[1][j]);
+			while (av[1][i] != av[2][j])
 				j++;
-			}
+			if (check(av[1], i) == 1)
+				ft_putchar(av[1][i]);
+			j = 0;
 			i++;
 		}
 	}

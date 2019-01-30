@@ -1,28 +1,58 @@
+#include <unistd.h>
 
-
-
-void	strmani(char * str)
+void ft_putchar(char c)
 {
-	int i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == ' ' || str[i] == '\t')
-		{
-			if (str[(i+1)] <= 122 && str[i+1] >= 97)
-				str[i+1] -= 32;
-			i++;
-		}
-		else if (str[i] <= 122 && str[i] >= 97 && str[(i-1)] == 
-	}
+	write(1, &c, 1);
 }
 
-int		main(int argc, char **argv)
+int		main(int ac, char **av)
 {
-	int i = 1;
-	int j = 0;
-
-	if (argc > 1)
+	if (ac > 1)
 	{
+		int i = 1;
+		int j = 0;
 
+		while (av[i] != av[ac])
+		{
+			if (av[i][0] <= 90 && av[i][0] >= 65)
+			{
+				ft_putchar(av[i][j]);
+				j++;
+			}
+			if (av[i][0] <= 122 && av[i][0] >= 97)
+			{
+				ft_putchar(av[i][j] - 32);
+				j++;
+			}
+			while (av[i][j] != '\0')
+			{
+				if (av[i][j] <= 90 && av[i][j] >= 65 && (av[i][j-1] == '\t' || av[i][j-1] == ' '))
+				{
+			  		ft_putchar(av[i][j]);
+					j++;
+				}
+				else if (av[i][j] <= 90 && av[i][j] >= 65)
+				{
+					ft_putchar(av[i][j] + 32);
+					j++;
+				}
+				else if (av[i][j] <= 122 && av[i][j] >= 97 && (av[i][j-1] == '\t' || av[i][j-1] == ' '))
+				{
+					ft_putchar(av[i][j] - 32);
+					j++;
+				}
+				else
+				{
+					ft_putchar(av[i][j]);
+					j++;
+				}
+			}
+			ft_putchar('\n');
+			j = 0;
+			i++;
+		}
 	}
+	else
+		ft_putchar('\n');
+	return (0);
 }
