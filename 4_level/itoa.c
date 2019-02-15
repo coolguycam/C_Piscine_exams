@@ -31,9 +31,7 @@ char	*ft_itoa(int nbr)
 	int count = 1;
 	char *res;
 	if (nbr == -2147483648)
-	{
 		return(ft_strdup("-2147483648"));
-	}
 	while (store > 9)
 	{
 		store /= 10;
