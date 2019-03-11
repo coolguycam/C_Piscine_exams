@@ -40,24 +40,26 @@ int ft_atoi(char *st)
 	return (res);
 }
 
+void	tab_mult(int num)
+{
+	int i = 1;
+	
+	while (i < 10)
+	{
+		ft_putnbr(i);
+		ft_putstr(" x ");
+		ft_putnbr(num);
+		ft_putstr(" = ");
+		ft_putnbr(i * num);
+		ft_putchar('\n');
+		i++;
+	}
+}
+
 int main(int ac, char **av)
 {
 	if (ac == 2)
-	{
-		int i = 1;
-		int num = ft_atoi(av[1]);
-
-		while (i < 10)
-		{
-			ft_putnbr(i);
-			ft_putstr(" x ");
-			ft_putnbr(num);
-			ft_putstr(" = ");
-			ft_putnbr(i * num);
-			ft_putchar('\n');
-			i++;
-		}
-	}
+		tab_mult(ft_atoi(av[1]));
 	else
 		ft_putchar('\n');
 	return (0);
