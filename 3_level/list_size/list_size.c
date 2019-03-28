@@ -1,6 +1,12 @@
-#include "list_size.h"
+#include "list.h"
 
 int		ft_list_size(t_list *begin_list)
 {
-	return (begin_list) ? (ft_list_size(begin_list->next) + 1) : (0);
+	int i = 0;
+	while (begin_list)
+	{
+		begin_list = begin_list->next;
+		i++;
+	}
+	return i;
 }
