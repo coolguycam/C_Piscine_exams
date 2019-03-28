@@ -17,28 +17,15 @@ void ft_putstr(char *c)
 
 void print_bits(unsigned char octet)
 {
-  char res[8];
-  int num = octet;
-  int i = 8;
-  while (i-- > 0)
+  int i = 128;
+  while (i > 0)
   {
-    if (num > 1)
-    {
-      if (num % 2 == 0)
-        res[i] = '0';
-      else if (num % 2 == 1)
-        res[i] = '1';
-    }
-    if (num <= 1)
-    {
-      if (num == 0)
-        res[i] = '0';
-      else if (num == 1)
-        res[i] = '1';
-    }
-    num /= 2;
+	  if (i & octet)
+		  ft_putchar('1');
+	  else
+		  ft_putchar('0');
+	  i >>= 1; // or i /= 2;
   }
-  ft_putstr(res);
 }
 unsigned char 	swap_bits(unsigned char octet)
 {
