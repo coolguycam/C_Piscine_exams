@@ -1,14 +1,24 @@
+#include <unistd.h>
 
-unsigned char  reverse_bits(unsigned char octet)
+void	ft_putchar(char c)
 {
-	int res = 0;
-	int i = 0;
+	write(1, &c, 1);
+}
 
-	while (i < 8)
+void	rev_bits(unsigned char octet)
+{
+	int i = 1;
+	while (i < 129)
 	{
-		res = (res << 1) | (octet & 1);
-		octet >>= 1;
-		i++;
+		if (i & octet)
+			ft_putchar('1');
+		else
+			ft_putchar('0');
+		i <<= 1;
 	}
-	return (res);
+}
+
+int main()
+{
+	rev_bits(2);
 }
