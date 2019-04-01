@@ -67,7 +67,7 @@ char	**ft_split(char const *s)
 			k++;
 		res[i] = ft_strsub_delim(s, k);
 		i++;
-		while (s[k] == ' ' && s[k] == '\t' && s[k] == '\n' && s[k])
+		while (s[k] != ' ' && s[k] != '\t' && s[k] != '\n' && s[k])
 			k++;
 	}
 	return (res);
